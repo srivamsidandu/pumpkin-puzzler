@@ -73,6 +73,7 @@ To play the Word Monster game, follow these steps:
 
 You can also access the live version of the game on [GitHub Pages](https://github.com/nsurve180/pumpkin-puzzler.git).
 
+
 ## Credits for Third-Party Assets and Code
 
 The Word Monster game incorporates the following third-party assets and code:
