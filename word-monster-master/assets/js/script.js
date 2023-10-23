@@ -6,6 +6,9 @@ Note: getWord() function is in separate words.js file, which also contains the w
  * listen for click on Category Buttons, on click hide the div holding category btns, run getWord to get the 
  * wordObject by wordCategory, then run startGame using wordObject and wordCategory
  */
+
+import { getRandomWord } from './utils.js'; //nams
+
 function initialiseCategories() {
     let categoryButtons = document.querySelectorAll(".category-btn");
     //Using forEach instead of if/else to allow for more categories in future
@@ -25,15 +28,31 @@ function initialiseCategories() {
  * @param {Object} wordObject word, hint, definition
  */
 function startGame(wordCategory, wordObject) {
+
+    // Get random word
+    const word = getRandomWord(); //nams
+      // Get properties from word
+    const wordToGuess = word.word;
+    const hint = word.hint;
+    const meaning = word.meaning;
     toggleElementVisibility("word-area-in-play");
     document.getElementById("category").innerText = `${wordCategory.toUpperCase()}`;
-    let word = wordObject.word.toUpperCase();
-    createLetterSpaces(word);
-    storeWordProperties(wordObject);
+    //let word = wordObject.word.toUpperCase();
+    createLetterSpaces(wordToGuess); //nams
+      // Update storeWordProperties
+    storeWordProperties(word, meaning); //nams
+    //storeWordProperties(wordObject);
     updateKeyboard("enable");
     document.getElementById("hint").addEventListener("click", giveHint);
     toggleElementVisibility("contact-btn");
 }
+
+// Update storeWordProperties()
+function storeWordProperties(wordObj) {
+
+    document.querySelector(".meaning").textContent = wordObj.meaning;
+  
+  }
 
 /**
  * create blank spaces (spans) for letters in word to be guessed in span-container div, 
