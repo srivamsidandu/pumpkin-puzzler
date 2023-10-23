@@ -6,6 +6,10 @@ Note: getWord() function is in separate words.js file, which also contains the w
  * listen for click on Category Buttons, on click hide the div holding category btns, run getWord to get the 
  * wordObject by wordCategory, then run startGame using wordObject and wordCategory
  */
+// script.js
+
+
+
 function initialiseCategories() {
     let categoryButtons = document.querySelectorAll(".category-btn");
     //Using forEach instead of if/else to allow for more categories in future
@@ -120,7 +124,7 @@ function handleIncorrectGuess(keyPressed) {
     let chancesRemaining = document.querySelectorAll(`img[data-guess]:not(.hidden)`).length;
     //decrease chancesRemaining by 1 and hide the img element with corresponding data-guess value
     document.querySelector(`img[data-guess="${chancesRemaining--}"]`).classList.add("hidden");
-    animateMonster();    
+    animatePumpkin();    
     //if no chances remaining, game is lost, run endGame function with wonGame value of false
     if (chancesRemaining === 0) {
         endGame(false);
@@ -130,7 +134,7 @@ function handleIncorrectGuess(keyPressed) {
 /**
  * animate monster graphic for wrong guess, by adding jump class for 150ms
  */
-function animateMonster() {
+function animatePumpkin() {
     document.querySelector(".monster").classList.add("jump");
     setTimeout (() => {
         document.querySelector(".monster").classList.remove("jump");
